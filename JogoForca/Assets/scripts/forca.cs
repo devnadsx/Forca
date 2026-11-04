@@ -3,7 +3,7 @@ using UnityEngine.InputSystem; // Importa o novo sistema de input
 
 public class JogoDaForca : MonoBehaviour
 {
-    string palavraSecreta = "PROGRAMACAO";
+    string palavraSecreta = "ROBLOX";
     char[] palavraOculta;
     int vidas = 6;
     bool jogoAcabou = false;
