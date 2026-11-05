@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem; // Importa o novo sistema de input
+using UnityEngine.SceneManagement;
 
 public class JogoDaForca : MonoBehaviour
 {
@@ -7,10 +8,11 @@ public class JogoDaForca : MonoBehaviour
     char[] palavraOculta;
     int vidas = 6;
     bool jogoAcabou = false;
+    string Fase2 = "Fase2";
 
     void Start()
     {
-        // Cria os espacinhos da palavra (_ _ _ _)
+        // cria os espaço
         palavraOculta = new char[palavraSecreta.Length];
         for (int i = 0; i < palavraOculta.Length; i++)
         {
@@ -60,16 +62,20 @@ public class JogoDaForca : MonoBehaviour
                 vidas--;
                 Debug.Log($"Ih, não tem '{letra}'. Você ainda tem {vidas} chances.");
             }
-
-           
+            if (vidas <= 3)
+            {
+                Debug.Log($"Dica: É uma plataforma de jogos, bem popular por sua variedades e possibilidades de jogos criados. E também é uma ferramenta de criação de jogos.");
+            }
             string palavraAtual = new string(palavraOculta);
             Debug.Log("Palavra: " + string.Join(" ", palavraOculta));
 
             
             if (palavraAtual == palavraSecreta)
             {
-                Debug.Log(" Mandou bem! Você acertou tudo!");
+                Debug.Log(" Mandou bem! Você acertou tudo! Carregando Fase 2!");
                 jogoAcabou = true;
+
+                SceneManager.LoadScene(Fase2);
             }
             else if (vidas <= 0)
             {
